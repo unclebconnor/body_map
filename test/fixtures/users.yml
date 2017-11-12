@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  google: MyString
-  788618239670-8sq8cfqrhk1rjh7lejpjupfudrch0irc: MyString
-  9GMz217E1uvh8MCnKg5g7XQb: MyString
-  email: MyString
+  provider: MyString
+  uid: MyString
   name: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2017-11-11 21:58:45
 
 two:
-  google: MyString
-  788618239670-8sq8cfqrhk1rjh7lejpjupfudrch0irc: MyString
-  9GMz217E1uvh8MCnKg5g7XQb: MyString
-  email: MyString
+  provider: MyString
+  uid: MyString
   name: MyString
+  oauth_token: MyString
+  oauth_expires_at: 2017-11-11 21:58:45
