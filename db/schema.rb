@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112214539) do
+ActiveRecord::Schema.define(version: 20171112221240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "annotations", force: :cascade do |t|
+    t.bigint "map_id"
+    t.string "bodyMapUrl"
+    t.string "title"
+    t.text "description"
+    t.string "link"
+    t.string "objectId"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["map_id"], name: "index_annotations_on_map_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "uniqueUrl"
+    t.text "summary"
+    t.text "article"
+    t.string "bodySystem"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_maps_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider"
@@ -27,4 +51,6 @@ ActiveRecord::Schema.define(version: 20171112214539) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "annotations", "maps"
+  add_foreign_key "maps", "users"
 end

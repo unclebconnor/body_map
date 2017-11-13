@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  map: one
+  bodyMapUrl: MyString
+  title: MyString
+  description: MyText
+  link: MyString
+  objectId: MyString
+
+two:
+  map: two
+  bodyMapUrl: MyString
+  title: MyString
+  description: MyText
+  link: MyString
+  objectId: MyString
