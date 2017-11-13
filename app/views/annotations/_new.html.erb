@@ -1,0 +1,33 @@
+<h1>Annotation#new</h1>
+
+<%= form_for Annotation.new do |a| %>
+  
+  <div>
+  <%= a.label :title %>
+  <%= a.text_field :title %>
+  </div>
+
+  <div>
+  <%= a.label :bodyMapUrl %>
+  <%= a.text_field :bodyMapUrl %>
+  </div>
+
+  <div>
+  <%= a.label :description %>
+  <%= a.text_field :description %>
+  </div>
+
+  <div>
+  <%= a.label :link %>
+  <%= a.text_area :link %>
+  </div>
+
+  <div>
+  <%= a.label :objectId %>
+  <%= a.text_area :objectId %>
+  </div>
+
+<%= a.hidden_field :map_id, :value => map.id %>
+
+  <%= a.submit %>
+<% end %>

@@ -1,12 +1,13 @@
 class AnnotationsController < ApplicationController
   def index
-    @annotations = Annotation.all
+
+    @annotations = @map.annotation.all
     #where user
   end
 
   def create
   	#search for map or pass params
-    @map.annotations.create(annotation_params)
+    Annotation.create(annotation_params)
     redirect_to maps_path(@map)
   end
 

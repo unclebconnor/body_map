@@ -5,6 +5,11 @@
 <p><%= @map.inspect %></p>
 
 <hr>
+<p>Create New Annotation</p>
+
+<%= render 'annotations/new', map: @map %>
+
+<hr>
 <p>List of annotations</p>
 
 <%= render 'annotations/index', map: @map%>
