@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'annotation/index'
-
-  get 'annotation/new'
-
-  get 'annotation/edit'
-
-  get 'map/index'
-
-  get 'map/show'
-
-  get 'map/new'
-
-  get 'map/edit'
 
   get 'user/show'
 
@@ -22,8 +8,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :annotation
-  resources :map
+  resources :annotations
+  resources :maps
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
 

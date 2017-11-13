@@ -1,0 +1,31 @@
+<h1>Map#new</h1>
+
+<%= form_for @map do |m| %>
+  
+  <div>
+  <%= m.label :name %>
+  <%= m.text_field :name %>
+  </div>
+
+  <div>
+  <%= m.label :uniqueUrl %>
+  <%= m.text_field :uniqueUrl %>
+  </div>
+
+  <div>
+  <%= m.label :bodySystem %>
+  <%= m.text_field :bodySystem %>
+  </div>
+
+  <div>
+  <%= m.label :summary %>
+  <%= m.text_area :summary %>
+  </div>
+
+  <div>
+  <%= m.label :article %>
+  <%= m.text_area :article %>
+  </div>
+
+  <%= m.submit %>
+<% end %>

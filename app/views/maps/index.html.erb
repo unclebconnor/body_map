@@ -1,0 +1,12 @@
+<h1>Map#index</h1>
+
+
+<% @maps.each do |map| %>
+<p><%= map.inspect %></p>
+<p><%= map.id %></p>
+<%= link_to "Edit", edit_map_path(map) %>
+<% end %>
+
+
+
+
