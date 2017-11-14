@@ -16,6 +16,8 @@ class MapsController < ApplicationController
 
   def edit
     @map = Map.find(params[:id])
+    @widgetInfo = Widget.find_by name: @map.bodySystem
+    @widgetInfo = @widgetInfo.contentId
     @widgets = Widget.all
     @annotations = @map.annotations.all
   end

@@ -27,6 +27,24 @@
 <script>
 var human = new HumanAPI("embeddedHuman");
 
+//THIS SHIT WORKS YES...I mean it gets the object data shown in the model
+  human.send("scene.info", function (data) {
+    console.log(JSON.stringify(data));
+});
+
+//configures and enables the tools in the 3d model
+var displayConfig = { 
+  objectTree: true, 
+  info: true, 
+  tools :true, 
+  zoomIn: false, 
+  zoomOut: false,
+};
+
+human.send("ui.setDisplay", displayConfig);
+
+
+
 $('#head').click(function(){
 
 	human.send( 'camera.set' , {
