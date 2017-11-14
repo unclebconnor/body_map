@@ -49,12 +49,44 @@
 <hr>
 <p>Create New Annotation</p>
 
-<%= render 'annotations/new', map: @map %>
+<section class="section">
+  <div class="container is-fluid">
+    <%= form_for Annotation.new do |a| %>
+      <%= a.hidden_field :map_id, :value => @map.id %>
+      <!-- eventually a dropdown for object id -->
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <%= a.text_field :title, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <%= a.text_area :description, class: "textarea", placeholder: "This will be displayed on the 3d model when the object is selected" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Link</label>
+        <div class="control">
+          <%= a.text_field :link, class: "input", placeholder: "Add an extra resource" %>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit" id="submitNewAnnotation">Submit</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
 
 <hr>
 <p>List of annotations</p>
 
+<div id="annotations">
 <%= render 'annotations/index', map: @map%>
+</div>
 
 <!-- To show preview of 3d model -->
 
@@ -63,6 +95,12 @@
 <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
 
 <script>
+$('#submitNewAnnotation').click(function(){
+    $('#annotations').load('/annotations_controller/index')
+    console.log('maps/<%=@map.id%>/edit')
+});
+
+
 var human = new HumanAPI("embeddedHuman");
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model

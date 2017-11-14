@@ -7,8 +7,10 @@ class AnnotationsController < ApplicationController
 
   def create
   	#search for map or pass params
-    Annotation.create(annotation_params)
-    redirect_to maps_path(@map)
+    @log = Annotation.create(annotation_params)
+    Rails.logger.debug(@log.map_id)
+    redirect_to edit_map_path(@log.map_id)
+    # redirect_to maps_path(@map)
   end
 
   def new
