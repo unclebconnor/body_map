@@ -5,8 +5,8 @@ body {
 }
 
 #embeddedHuman{
-  width:500px;
-  height: 600px;
+  max-width:480px;
+  height: 420px;
 }
 
 /*#human-content {

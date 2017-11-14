@@ -1,14 +1,22 @@
-<h1>Map#show</h1>
 
-<div id="human-content">
+<section class="section">
+  <div class="container is-fluid">
+    <h1>Map#show</h1>
+      <div id="human-content">
+        <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetInfo%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
+        </iframe>
+      </div>
+      <div id="head">head</div>
+      <div id="ear">ear</div>
+    <div class="summary">Summary: <%= @map.summary %><div>
+    <div class="summary">Article: <%= @map.article %><div>
+      
+  </div>
+</section>
 
-  <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?m=production/maleAdult/male_system_anatomy_skeletal_whole.json&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
-  </iframe>
+  
 
-  <div id="head">head</div>
-  <div id="ear">ear</div>
 
-</div>
 
 
 
@@ -18,8 +26,6 @@
 
 <script>
 var human = new HumanAPI("embeddedHuman");
-
-
 
 $('#head').click(function(){
 
