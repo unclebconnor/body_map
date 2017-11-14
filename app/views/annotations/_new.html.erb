@@ -1,33 +1,33 @@
 <h1>Annotation#new</h1>
 
-<%= form_for Annotation.new do |a| %>
-  
-  <div>
-  <%= a.label :title %>
-  <%= a.text_field :title %>
+<section class="section">
+  <div class="container is-fluid">
+    <%= form_for Annotation.new do |a| %>
+      <%= a.hidden_field :map_id, :value => map.id %>
+      <!-- eventually a dropdown for object id -->
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <%= a.text_field :title, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <%= a.text_area :description, class: "textarea", placeholder: "This will be displayed on the 3d model when the object is selected" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Link</label>
+        <div class="control">
+          <%= a.text_field :link, class: "input", placeholder: "Add an extra resource" %>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">Submit</button>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-  <%= a.label :bodyMapUrl %>
-  <%= a.text_field :bodyMapUrl %>
-  </div>
-
-  <div>
-  <%= a.label :description %>
-  <%= a.text_field :description %>
-  </div>
-
-  <div>
-  <%= a.label :link %>
-  <%= a.text_area :link %>
-  </div>
-
-  <div>
-  <%= a.label :objectId %>
-  <%= a.text_area :objectId %>
-  </div>
-
-<%= a.hidden_field :map_id, :value => map.id %>
-
-  <%= a.submit %>
-<% end %>
+</section>

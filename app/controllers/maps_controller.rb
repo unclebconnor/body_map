@@ -16,6 +16,7 @@ class MapsController < ApplicationController
 
   def edit
     @map = Map.find(params[:id])
+    @widgets = Widget.all
     @annotations = @map.annotations.all
   end
 

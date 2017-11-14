@@ -1,8 +1,46 @@
 <h1>Map#edit</h1>
-<p>Form for map details</p>
-<p>Form to add annotation in a modal</p>
 
-<p><%= @map.inspect %></p>
+<section class="section">
+  <div class="container is-fluid">
+    <%= form_for @map do |m| %>
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <%= m.text_field :name, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Unique Url (cannot contain spaces)</label>
+        <div class="control">
+          <%= m.text_field :uniqueUrl, class: "input" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Body System</label>
+        <div class="control">
+          <%=m.select(:bodySystem, @widgets.collect {|w| [ w.name ] }, { include_blank: true },class: "select") %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Summary</label>
+        <div class="control">
+          <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the student page" %>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Article</label>
+        <div class="control">
+          <%= m.text_area :article, class: "textarea", placeholder: "This is the content of the student page" %>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">Submit</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
 
 <hr>
 <p>Create New Annotation</p>
