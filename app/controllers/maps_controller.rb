@@ -11,6 +11,7 @@ class MapsController < ApplicationController
 
   def new
     @map = Map.new
+    @widgets = Widget.all
   end
 
   def edit

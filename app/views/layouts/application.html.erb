@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Body Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -16,7 +17,7 @@
       <% end %>
     </div>
     <div>
-    <%= yield %>
+      <%= yield %>
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="https://developer.biodigital.com/builds/human-components/1.0.0/js/human-components.min.js"></script>
