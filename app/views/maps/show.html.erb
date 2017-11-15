@@ -22,6 +22,7 @@
         <button 
           class="button interact" 
           data-title="<%= a.title %>"
+          data-description="<%= a.description %>"
         ><%= a.title %>    
         </button>
       <%end%>
@@ -59,24 +60,42 @@ human.on( 'scene.xrayEnabled')
 //configures interactions
 var organs = gon.organs;
 var selection = "";
+var description = "";
 var object = "";
+var activeAnnotation = "";
 
+// gets info about the object that's selected
 $('.interact').click(function(e){
   selection = $(this).attr('data-title');
-  object = getObjectId(selection)
+  description = $(this).attr('data-description');
+  object = getObjectId(selection);
 
+
+  //formatting for selectObjects
   var objectMap = {}
   var key = `${object}`;
   objectMap[key] = true;
 	
+  //settings for widget window...available tools, etc.
   human.send( 'camera.set' , {
     objectId: object,
     animate: true,
     animationDuration: 1.0,
     animationStyle: 'around'
   })
+  //selects object that user clicks
   human.send('scene.selectObjects',objectMap)
 	human.send( 'camera.zoom' , .9)
+
+  human.send("annotations.destroy", activeAnnotation);
+  //adds user annotation
+  human.send("annotations.create", {
+    title: selection,
+    description: description,
+    objectId: object
+  },function(annotation){
+    activeAnnotation = annotation;
+  });
 });
 
 var getObjectId = function(name){
