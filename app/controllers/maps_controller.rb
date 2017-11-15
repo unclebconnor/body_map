@@ -17,8 +17,10 @@ class MapsController < ApplicationController
   def edit
     @map = Map.find(params[:id])
     @widgetInfo = Widget.find_by name: @map.bodySystem
-    @widgetInfo = @widgetInfo.contentId
-    @widgets = Widget.all
+    @widgetSelected =@widgetInfo.name
+    @widgetId = @widgetInfo.contentId
+    @organs = Organ.where(:widget_id => @widgetInfo.id)
+    @organs = @organs.order(:id)
     @annotations = @map.annotations.all
   end
 

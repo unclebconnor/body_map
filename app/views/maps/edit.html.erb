@@ -2,7 +2,7 @@
 
 <section class="section">
   <div id="human-content">
-    <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetInfo%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
+    <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
     </iframe>
   </div>
   <div class="container is-fluid">
@@ -22,7 +22,7 @@
       <div class="field">
         <label class="label">Body System</label>
         <div class="control">
-          <%=m.select(:bodySystem, @widgets.collect {|w| [ w.name ] }, { include_blank: true },class: "select") %>
+          <%= @map.bodySystem %>
         </div>
       </div>
       <div class="field">
@@ -47,9 +47,11 @@
 </section>
 
 <hr>
-<p>Create New Annotation</p>
 
-<section class="section">
+
+
+<section class="section newAnnotationsPartial">
+  <p>Create New Annotation</p>
   <div class="container is-fluid">
     <%= form_for Annotation.new do |a| %>
       <%= a.hidden_field :map_id, :value => @map.id %>
@@ -57,7 +59,7 @@
       <div class="field">
         <label class="label">Title</label>
         <div class="control">
-          <%= a.text_field :title, class: "input" %>
+          <%=a.select(:title, @organs.collect {|w| [ w.name ] },class: "select") %>
         </div>
       </div>
       <div class="field">
@@ -84,7 +86,7 @@
 <hr>
 <p>List of annotations</p>
 
-<div id="annotations">
+<div id="annotationsPartial">
 <%= render 'annotations/index', map: @map%>
 </div>
 
@@ -95,18 +97,15 @@
 <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
 
 <script>
-$('#submitNewAnnotation').click(function(){
-    $('#annotations').load('/annotations_controller/index')
-    console.log('maps/<%=@map.id%>/edit')
-});
+
 
 
 var human = new HumanAPI("embeddedHuman");
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
-  human.send("scene.info", function (data) {
-    console.log(JSON.stringify(data));
-});
+// human.send("scene.info", function (data) {
+//     console.log(JSON.stringify(data));
+// });
 
 //configures and enables the tools in the 3d model
 var displayConfig = { 
