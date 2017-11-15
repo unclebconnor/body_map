@@ -1,20 +1,32 @@
 
 <section class="section">
   <div class="container is-fluid">
-    <h1>Map#show</h1>
-      <div id="human-content">
-        <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetInfo%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
-        </iframe>
-      </div>
-      <div id="head">head</div>
-      <div id="ear">ear</div>
-    <div class="summary">Summary: <%= @map.summary %><div>
-    <div class="summary">Article: <%= @map.article %><div>
-      
+    <div id="human-content">
+      <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetContentId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
+      </iframe>
+    </div>
   </div>
 </section>
 
-  
+<section class="section">
+  <div class="container is-fluid">
+    <div class="summary">Summary: <%= @map.summary %><div>
+    <div class="summary">Article: <%= @map.article %><div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-fluid">
+    <div>Annotations:<div>
+      <% @annotations.each do |a| %>
+        <button 
+          class="button interact" 
+          data-title="<%= a.title %>"
+        ><%= a.title %>    
+        </button>
+      <%end%>
+  </div>
+</section>
 
 
 
@@ -26,6 +38,7 @@
 
 <script>
 var human = new HumanAPI("embeddedHuman");
+
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
 //   human.send("scene.info", function (data) {
@@ -42,33 +55,38 @@ var displayConfig = {
 };
 
 human.send("ui.setDisplay", displayConfig);
+human.on( 'scene.xrayEnabled')
+//configures interactions
+var organs = gon.organs;
+var selection = "";
+var object = "";
 
+$('.interact').click(function(e){
+  selection = $(this).attr('data-title');
+  object = getObjectId(selection)
 
-
-$('#head').click(function(){
-
-	human.send( 'camera.set' , {
-  		objectId: "male_system_anatomy_skeletal_whole-frontal_ID"
-  	})
-  	human.send('scene.selectObjects',{
-  		"male_system_anatomy_skeletal_whole-frontal_ID": true
-  	})
+  var objectMap = {}
+  var key = `${object}`;
+  objectMap[key] = true;
+	
+  human.send( 'camera.set' , {
+    objectId: object,
+    animate: true,
+    animationDuration: 1.0,
+    animationStyle: 'around'
+  })
+  human.send('scene.selectObjects',objectMap)
 	human.send( 'camera.zoom' , .9)
 });
 
-$('#ear').click(function(){
-	human.send( 'camera.set' , {
-  		objectId: "male_system_anatomy_connective_tissue_whole-left_ear_ID"
-  	})
-  	human.send('scene.selectObjects',{
-  		"male_system_anatomy_connective_tissue_whole-left_ear_ID": true
-  	})
-	human.send( 'camera.zoom' , .9)
-});
-
-human.on("scene.picked", function(info){
-		console.log(info)
-	})
-
+var getObjectId = function(name){
+  var obId = ""
+  for (var i=0; i<organs.length;i++){
+    if(organs[i].name===name){
+      obId = organs[i].objectId;
+    }
+  }
+  return obId
+}
 
 </script>

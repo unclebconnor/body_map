@@ -27,7 +27,8 @@ class MapsController < ApplicationController
   def show
     @map = Map.find(params[:id])
     @widgetInfo = Widget.find_by name: @map.bodySystem
-    @widgetInfo = @widgetInfo.contentId
+    @widgetContentId = @widgetInfo.contentId
+    gon.organs = Organ.where(:widget_id => @widgetInfo.id)
     @widgets = Widget.all
     @annotations = @map.annotations.all
     # render json: params

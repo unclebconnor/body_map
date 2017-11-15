@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'dotenv-rails'
 gem "bulma-rails", "~> 0.6.1"
+gem 'gon'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
