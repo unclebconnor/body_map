@@ -62,38 +62,34 @@
 
 
 
-<section class="newAnnotationsPartial modal level" id="modalWrapper">
+<div class=" modal" id="modalWrapper">
   <div class="modal-background"></div>
-  <p>Create New Annotation</p>
-  <div class="container is-fluid modal-content box ">
-    <%= form_for Annotation.new do |a| %>
-      <%= a.hidden_field :map_id, :value => @map.id %>
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <%=a.select(:title, @organs.collect {|w| [ w.name ] },class: "select") %>
+  <div class="modal-card">
+    <header class="modal-card-head">Create New Annotation</header>
+    <section class="modal-card-body">
+      <%= form_for Annotation.new do |a| %>
+        <%= a.hidden_field :map_id, :value => @map.id %>
+        <div class="field">
+          <label class="label">Object</label>
+          <div class="control">
+            <%=a.select(:title, @organs.collect {|w| [ w.name ] },class: "select") %>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <%= a.text_area :description, class: "textarea", placeholder: "This will be displayed on the 3d model when the object is selected" %>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <%= a.text_area :description, class: "textarea", placeholder: "This will be displayed on the 3d model when the object is selected" %>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Link</label>
-        <div class="control">
-          <%= a.text_field :link, class: "input", placeholder: "Add an extra resource" %>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit" id="submitNewAnnotation">Submit</button>
+          </div>
         </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" type="submit" id="submitNewAnnotation">Submit</button>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+    </section>
   </div>
-</section>
+</div>
 
 <p>List of annotations</p>
 

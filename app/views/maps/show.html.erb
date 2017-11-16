@@ -42,6 +42,14 @@
 <script>
 var human = new HumanAPI("embeddedHuman");
 
+//hide visible annotations
+human.send('annotations.info',function(annotations){
+  for (var property in annotations) {
+    if (annotations.hasOwnProperty(property)) {
+      human.send('annotations.destroy',property)
+    }
+  }
+});
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
 //   human.send("scene.info", function (data) {
@@ -58,7 +66,9 @@ var displayConfig = {
 };
 
 human.send("ui.setDisplay", displayConfig);
-human.on( 'scene.xrayEnabled')
+human.on( 'scene.xrayEnabled');
+
+
 //configures interactions
 var organs = gon.organs;
 var selection = "";
@@ -89,7 +99,9 @@ $('.interact').click(function(e){
   human.send('scene.selectObjects',objectMap)
 	human.send( 'camera.zoom' , .9)
 
-  //clear previous annotation
+
+
+  //clear previously created annotation
   human.send("annotations.destroy", activeAnnotation);
   //adds user annotation
   human.send("annotations.create", {
@@ -98,6 +110,7 @@ $('.interact').click(function(e){
     objectId: object
   },function(annotation){
     activeAnnotation = annotation;
+    human.send('annotation.show',annotation)
   });
 });
 
