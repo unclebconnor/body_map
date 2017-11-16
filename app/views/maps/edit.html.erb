@@ -36,6 +36,7 @@
           </div>
         </div>
       </div>
+      <button class="button" id="openModal">+ Add Annotation</button>
     </div>
   </div>
 <!-- next row -->
@@ -61,12 +62,12 @@
 
 
 
-<section class="lr-pads tb-pads newAnnotationsPartial">
+<section class="newAnnotationsPartial modal level" id="modalWrapper">
+  <div class="modal-background"></div>
   <p>Create New Annotation</p>
-  <div class="container is-fluid">
+  <div class="container is-fluid modal-content box ">
     <%= form_for Annotation.new do |a| %>
       <%= a.hidden_field :map_id, :value => @map.id %>
-      <!-- eventually a dropdown for object id -->
       <div class="field">
         <label class="label">Title</label>
         <div class="control">
@@ -94,7 +95,6 @@
   </div>
 </section>
 
-<hr>
 <p>List of annotations</p>
 
 <div id="annotationsPartial">
@@ -109,6 +109,11 @@
 
 <script>
 
+$('#openModal').click(function(e){
+  e.preventDefault();
+  console.log('that thing')
+  $('#modalWrapper').addClass('is-active')
+})
 
 
 var human = new HumanAPI("embeddedHuman");
