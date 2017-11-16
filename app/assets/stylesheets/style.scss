@@ -10,6 +10,10 @@ body {
   line-height: 24px;
 }
 
+.padding{
+	padding: 0.25rem;
+}
+
 #embeddedHuman{
   max-width:480px;
   height: 420px;
@@ -20,6 +24,10 @@ body {
 	border-radius: 50%;
 	border: 1px solid white;
 
+}
+
+.box{
+	margin: 0;
 }
 
 .navSuper{
@@ -49,9 +57,57 @@ body {
 }
 
 
+
+.homePhoto{
+	display: inline-block;
+	width: 280px;
+}
+
 .homePage{
 	height: 100vh;
   	/*background-image: image-url("homepage-bkg.gif");
   	background-size: cover;
   	opacity: 60%;*/
 }
+
+.columns, .box{
+	margin:0;
+	margin-top:0;
+	margin-left:0;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+
+
+/*helpers*/
+.center{
+	text-align: center;
+}
+
+.left{
+	text-align: left;
+}
+
+.lr-pads{
+	padding: 0 2rem;
+}
+
+.tb-pads{
+	padding: 2rem 0;
+}
+
+.border-right{
+	border-right: 1px solid lightgray;
+}
+
+.border-bottom{
+	border-bottom: 1px solid lightgray;
+}
+
+
+
+
+
+
+
+/**/

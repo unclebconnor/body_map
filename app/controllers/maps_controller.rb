@@ -6,7 +6,7 @@ class MapsController < ApplicationController
   def create
   	@user = current_user
     @user.maps.create(map_params)
-    redirect_to maps_path
+    redirect_to user_path(@user.id)
   end
 
   def new
@@ -37,7 +37,7 @@ class MapsController < ApplicationController
   def update
     m = Map.find(params[:id])
     m.update(map_params)
-    redirect_to maps_path
+    redirect_to user_path(current_user.id)
   end
 
   def destroy

@@ -1,45 +1,56 @@
-<h1>Map#edit</h1>
+<section class="lr-pads tb-pads">
+  <div class="is-size-3">Edit Map</div>
+</section>
 
-<section class="section">
-  <div id="human-content">
-    <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
-    </iframe>
-  </div>
-  <div class="container is-fluid">
+<section class="lr-pads tb-pads">
+<!-- begin top row -->
+  <div class="container is-fluid columns level">
+    <div class="column level-item">
+      <div id="human-content" >
+        <iframe 
+          id="embeddedHuman" 
+          src="https://human.biodigital.com/widget?<%= @widgetId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131"
+        >
+        </iframe>
+      </div>
+    </div>
+    <div class="column box">
     <%= form_for @map do |m| %>
-      <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-          <%= m.text_field :name, class: "input" %>
+      <div>
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <%= m.text_field :name, class: "input" %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Body System</label>
+          <div class="control">
+            <%= @map.bodySystem %>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Summary</label>
+          <div class="control">
+            <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the student page" %>
+          </div>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Unique Url (cannot contain spaces)</label>
-        <div class="control">
-          <%= m.text_field :uniqueUrl, class: "input" %>
+    </div>
+  </div>
+<!-- next row -->
+  <div class="container is-fluid">
+      <div class="box">
+        <div class="field">
+          <label class="label">Article</label>
+          <div class="control">
+            <%= m.text_area :article, class: "textarea", placeholder: "This is the content of the student page" %>
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label class="label">Body System</label>
-        <div class="control">
-          <%= @map.bodySystem %>
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Summary</label>
-        <div class="control">
-          <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the student page" %>
-        </div>
-      </div>
-      <div class="field">
-        <label class="label">Article</label>
-        <div class="control">
-          <%= m.text_area :article, class: "textarea", placeholder: "This is the content of the student page" %>
-        </div>
-      </div>
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link" type="submit">Submit</button>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
         </div>
       </div>
     <% end %>
@@ -50,7 +61,7 @@
 
 
 
-<section class="section newAnnotationsPartial">
+<section class="lr-pads tb-pads newAnnotationsPartial">
   <p>Create New Annotation</p>
   <div class="container is-fluid">
     <%= form_for Annotation.new do |a| %>

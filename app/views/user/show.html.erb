@@ -1,2 +1,24 @@
-<h1>User#show</h1>
-<p><%= @user.name %></p>
+<section class="section">
+	<div class="container is-fluid columns border-bottom">
+		<div class="column level center border-right">
+			<img src="<%= @user.img_url %>" class="homePhoto level-item"></img>
+		</div>
+		<div class="column level">
+			<div class="center">
+				<div class="is-size-4"><%= @user.name %></div>
+			</div>
+			<div class="left lr-pads">
+				<p class="is-size-5">Bio</p>
+				<p class=""><%= @user.bio %></p>
+			</div>
+			<div><%= link_to "+ New Map", new_map_path, class: "button" %></div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container is-fluid">
+		<%= render 'maps/index'%>
+	</div>
+</section>
+
+<!-- add modal to edit bio -->

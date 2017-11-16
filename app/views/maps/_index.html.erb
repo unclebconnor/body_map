@@ -1,0 +1,19 @@
+<div>
+	<div class="is-size-3 tb-pads">Your Body Maps</div>
+	<div class="tb-pads">
+		<% current_user.maps.all.each do |map| %>
+			<div class="box columns">
+				<div class="column is-one-quarter"><%= map.name %></div>
+				<div class="column"><%= map.bodySystem %></div>
+				<div class="column is-one-fifth">
+					<%= link_to "View", map_path(map) %>
+					<%= link_to "Edit", edit_map_path(map) %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+
+
