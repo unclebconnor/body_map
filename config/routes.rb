@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'user/show'
+  get 'user/:id', to: 'user#show', as: 'user'
 
   get 'user/edit'
 

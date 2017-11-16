@@ -1,5 +1,11 @@
+/*
+font-family: 'Titillium Web', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Lato', sans-serif;
+*/
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 16px;
   line-height: 24px;
 }
@@ -9,9 +15,43 @@ body {
   height: 420px;
 }
 
-/*.homePage{
-  background-image: image-url("homepage-bkg.gif");
-  background-size: cover;
-  height: 100vh;
-  opacity: 60%;
-}*/
+.thumb{
+	width: 40px;
+	border-radius: 50%;
+	border: 1px solid white;
+
+}
+
+.navSuper{
+	.level:not(:last-child){
+		margin: 0;
+	}
+}
+
+.nav{
+	height: 60px;
+	background-color: black;
+	text-align: right;
+}
+
+.nav-wrapper{
+	display: inline-block;
+}
+
+.nav-item{
+	margin: 0 10px;
+	a{
+		color: white;
+	};
+	strong{
+		color: white;
+	}
+}
+
+
+.homePage{
+	height: 100vh;
+  	/*background-image: image-url("homepage-bkg.gif");
+  	background-size: cover;
+  	opacity: 60%;*/
+}
