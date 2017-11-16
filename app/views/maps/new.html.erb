@@ -1,40 +1,44 @@
 
 
-<section class="section">
-  <div class="container is-fluid">
-    <div class="is-size-3">Create a New Body Map</div>
-    <div class="box">
-      <%= form_for @map do |m| %>
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <%= m.text_field :name, class: "input" %>
+<section class="section killThePad lr-margin">
+  <div class="columns">
+    <div class="column spacing"></div>
+    <div class="container is-fluid column is-two-thirds-desktop is-two-thirds-tablet">
+      <div class="is-size-3 tb-margin center">Create a New Body Map</div>
+      <div class="box">
+        <%= form_for @map do |m| %>
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <%= m.text_field :name, class: "input" %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Body System</label>
-          <div class="control">
-            <%=m.select(:bodySystem, @widgets.collect {|w| [ w.name ] },class: "select") %>
+          <div class="field">
+            <label class="label">Body System</label>
+            <div class="control">
+              <%=m.select(:bodySystem, @widgets.collect {|w| [ w.name ] },class: "select") %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Summary</label>
-          <div class="control">
-            <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the student page" %>
+          <div class="field">
+            <label class="label">Summary</label>
+            <div class="control">
+              <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the map page" %>
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Article</label>
-          <div class="control">
-            <%= m.text_area :article, class: "textarea", placeholder: "This is the content of the student page" %>
+          <div class="field">
+            <label class="label">Article</label>
+            <div class="control">
+              <%= m.text_area :article, class: "textarea", placeholder: "This is the main content of the map page" %>
+            </div>
           </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" type="submit">Submit</button>
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">Submit</button>
+            </div>
           </div>
-        </div>
-      <% end %>
-  </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="column spacing"></div>
   </div>
 </section>
