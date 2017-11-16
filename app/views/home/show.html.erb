@@ -1,10 +1,53 @@
-<div class="homePage level">
-	<section class="section level-item">
-		<h1 class="greeting">
-			Welcome to the thing
-		</h1>
-
+<div class="homePage">
+	<section class="section ">
+		<div class="columns container is-fluid level">
+			<div class="column is-desktop -is-table spacer"></div>
+			<div class="column level-item is-flex is-one-third-desktop is-one-third-tablet">
+				<iframe 
+					id ="embeddedHuman"
+					class="box" 
+					frameBorder="1" 
+					width="280" 
+					height="350" 
+					allowFullScreen="true" 
+					src="https://human.biodigital.com/widget/?be=2Hyd&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131"
+					>
+						
+				</iframe>
+			</div>
+			<div class="column level-item center is-one-third-desktop is-one-third-tablet box lr-margin">
+				<p class="is-size-2 center">Body Map</p>
+				<p class="left tb-margin">Log in using your Google account and start creating interactive reference pages to help you or your students learn the systems of the human body!</p>
+				<p class="center">Powered by <a href="https://www.biodigital.com">BioDigital</a></p>
+			</div>
+			<div class="column is-desktop is-tablet spacer"></div>
+		</div>
 	</section>
 </div>
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://developer.biodigital.com/builds/human-components/1.0.0/js/human-components.min.js"></script>
+<script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
 
+<script type="text/javascript">
+
+var human = new HumanAPI("embeddedHuman");
+
+var displayConfig = { 
+  objectTree: true, 
+  tools :true, 
+  zoomIn: false, 
+  zoomOut: false,
+};
+
+human.send("ui.setDisplay", displayConfig);
+
+(function update() {
+    // Orbit camera horizontally around target
+    human.send("camera.orbit", {
+        yaw: 0.2
+    });
+    requestAnimationFrame(update);
+})();
+
+</script>

@@ -41,8 +41,10 @@ class MapsController < ApplicationController
   end
 
   def destroy
-    Map.find(params[:id]).delete
-    redirect_to maps_path
+    @map = Map.find(params[:id])
+    Annotation.where(:map_id => @map.id).destroy_all
+    Map.find(params[:id]).destroy
+    redirect_to user_path(current_user.id)
   end
 
   private

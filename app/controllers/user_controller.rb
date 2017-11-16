@@ -1,8 +1,7 @@
 class UserController < ApplicationController
   def show
   	@user = current_user
-  end
-
-  def edit
+  	@maps = @user.maps.all
+  	@map_count = @maps.length
   end
 end

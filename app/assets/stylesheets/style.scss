@@ -56,6 +56,25 @@ body {
 	}
 }
 
+.mapListItemContainer{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto auto auto;
+}
+
+.mapListR1{
+	grid-row: 1;
+}
+
+.mapListR2{
+	grid-row: 2;
+}
+
+.mapListR3{
+	grid-row: 3;
+}
+
+
 
 
 .homePhoto{
@@ -64,7 +83,7 @@ body {
 }
 
 .homePage{
-	height: 100vh;
+	height: 90vh;
   	/*background-image: image-url("homepage-bkg.gif");
   	background-size: cover;
   	opacity: 60%;*/
@@ -89,11 +108,35 @@ body {
 }
 
 .lr-pads{
-	padding: 0 2rem;
+	padding: 0 1.5rem !important;
 }
 
 .tb-pads{
-	padding: 2rem 0;
+	padding: 1.5rem 0 !important;
+}
+
+.lr-margin{
+	margin: 0 2rem !important;
+}
+
+.tb-margin{
+	margin: 2rem 0 !important;
+}
+
+.lr-nudge{
+	margin: 0 0.5rem !important;
+}
+
+.tb-nudge{
+	margin: 0.5rem 0 !important;
+}
+
+.lr-padNudge{
+	padding: 0 0.5rem !important;
+}
+
+.tb-padNudge{
+	padding: 0.5rem 0 !important;
 }
 
 .border-right{
@@ -102,6 +145,14 @@ body {
 
 .border-bottom{
 	border-bottom: 1px solid lightgray;
+}
+
+.nowrap {
+    display: inline-block;
+}
+
+.killThePad{
+	padding: 0px !important;
 }
 
 
