@@ -1,4 +1,4 @@
-
+<!-- widget -->
 <section class="section">
   <div class="container is-fluid">
     <div id="human-content">
@@ -8,16 +8,12 @@
   </div>
 </section>
 
+<!-- summary and buttons -->
 <section class="section">
   <div class="container is-fluid">
     <div class="summary">Summary: <%= @map.summary %><div>
-    <div class="summary">Article: <%= @map.article %><div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-fluid">
-    <div>Annotations:<div>
+    <div class="annotationButtons">
+      <div>Click to Interact<div>
       <% @annotations.each do |a| %>
         <button 
           class="button interact" 
@@ -26,17 +22,23 @@
         ><%= a.title %>    
         </button>
       <%end%>
+    <div>
   </div>
 </section>
 
+<!-- article -->
+<section class="section">
+  <div class="container is-fluid">
+    <div class="article">Article: <%= @map.article %><div>
+  </div>
+</section>
 
-
-
-
+<!-- necessary scripts to manipulate widget -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://developer.biodigital.com/builds/human-components/1.0.0/js/human-components.min.js"></script>
 <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>
 
+<!-- //custom script -->
 <script>
 var human = new HumanAPI("embeddedHuman");
 
@@ -87,6 +89,7 @@ $('.interact').click(function(e){
   human.send('scene.selectObjects',objectMap)
 	human.send( 'camera.zoom' , .9)
 
+  //clear previous annotation
   human.send("annotations.destroy", activeAnnotation);
   //adds user annotation
   human.send("annotations.create", {
