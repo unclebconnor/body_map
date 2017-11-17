@@ -1,37 +1,45 @@
-<!-- widget -->
-<section class="section">
-  <div class="container is-fluid">
-    <div id="human-content">
-      <iframe id="embeddedHuman" src="https://human.biodigital.com/widget?<%= @widgetContentId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
-      </iframe>
+<!-- summary and buttons -->
+<section class="section killThePad lr-margin tb-margin">
+  <div class="container is-fluid box">
+    <div class="annotationButtons columns level">
+      <div class="column is-one-fifth-desktop is-one-fifth-tablet">
+        Click to Interact
+      </div>
+      <div class="column">
+        <% @annotations.each do |a| %>
+          <button 
+            class="button interact miniMargin" 
+            data-title="<%= a.title %>"
+            data-description="<%= a.description %>"
+          ><%= a.title %>    
+          </button>
+        <%end%>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- summary and buttons -->
-<section class="section">
-  <div class="container is-fluid">
-    <div class="summary">Summary: <%= @map.summary %><div>
-    <div class="annotationButtons">
-      <div>Click to Interact<div>
-      <% @annotations.each do |a| %>
-        <button 
-          class="button interact" 
-          data-title="<%= a.title %>"
-          data-description="<%= a.description %>"
-        ><%= a.title %>    
-        </button>
-      <%end%>
-    <div>
+<!-- widget -->
+<section class="section columns killThePad lr-margin center">
+  <div class="container column is-half-desktop is-half-tablet lr-padNudge">
+    <div id="human-content" class="inline-block">
+      <iframe id="embeddedHuman" class="showHuman box" src="https://human.biodigital.com/widget?<%= @widgetContentId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131">
+      </iframe>
+    </div>
+  </div>
+  <div class="container column is-half-desktop is-half-tablet lr-pads articleText">
+    <div class="summary">
+      <div class="padR left is-size-4 tb-nudge">Summary:</div> 
+      <div class="padR has-text-justified">
+        <%= @map.summary %>
+      <div>
+    <div class="article">
+      <div class="padR left is-size-4 tb-nudge">Article:</div> 
+      <div class="padR has-text-justified"><%= @map.article %><div>
+         <div>
   </div>
 </section>
 
-<!-- article -->
-<section class="section">
-  <div class="container is-fluid">
-    <div class="article">Article: <%= @map.article %><div>
-  </div>
-</section>
 
 <!-- necessary scripts to manipulate widget -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>

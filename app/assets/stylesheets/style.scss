@@ -74,7 +74,28 @@ body {
 	grid-row: 3;
 }
 
+@media only screen and (min-width: 768px) {
+	.showHuman{
+		width: 40vw;
+		height: 60vh;
+	}
+	.articleText{
+		height: 63vh;
+		overflow: scroll; 
+	}
 
+	.padR{
+		padding-right: .5rem !important;
+	}
+}
+
+@media only screen and  (max-width: 767px) {
+	.showHuman{
+		width: 85vw;
+		height: 80vh;
+		margin: 0 auto;
+	}
+}
 
 
 .homePhoto{
@@ -107,52 +128,61 @@ body {
 	text-align: left;
 }
 
+.miniMargin{
+	margin: .25rem;
+}
+
 .lr-pads{
-	padding: 0 1.5rem !important;
+	padding-left: 1.5rem !important;
+	padding-right: 1.5rem !important;
 }
 
 .tb-pads{
-	padding: 1.5rem 0 !important;
+	padding-top: 1.5rem !important;
+	padding-top: 1.5rem !important;
 }
 
 .lr-margin{
-	margin: 0 2rem !important;
+	margin-left: 2rem !important;
+	margin-right: 2rem !important;
 }
 
 .tb-margin{
-	margin: 2rem 0 !important;
+	margin-top: 2rem !important;
+	margin-bottom: 2rem !important;
 }
 
 .lr-nudge{
-	margin: 0 0.5rem !important;
+	margin-left: 0.5rem !important;
+	margin-right: 0.5rem !important;
 }
 
 .tb-nudge{
-	margin: 0.5rem 0 !important;
+	margin-top: 0.5rem !important;
+	margin-bottom: 0.5rem !important;
 }
 
 .lr-padNudge{
-	padding: 0 0.5rem !important;
+	padding-left: 0.5rem !important;
+	padding-right: 0.5rem !important;
 }
 
 .tb-padNudge{
-	padding: 0.5rem 0 !important;
+	padding-top: 0.5rem !important;
+	padding-bottom: 0.5rem !important;
 }
 
-.border-right{
-	border-right: 1px solid lightgray;
-}
-
-.border-bottom{
-	border-bottom: 1px solid lightgray;
-}
-
-.nowrap {
-    display: inline-block;
-}
 
 .killThePad{
 	padding: 0px !important;
+}
+
+.killTheMargin{
+	margin: 0px !important;
+}
+
+.inline-block{
+	display: inline-block;
 }
 
 
