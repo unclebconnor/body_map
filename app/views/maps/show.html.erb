@@ -60,7 +60,7 @@ $('#embeddedHuman').scanner();
 
 //adds styling when dom nodes are created
 $('body').on('DOMNodeInserted',function(e){
-    $('.anatomy-object').addClass('button is-small')
+    $('.anatomy-object').addClass('button is-small interact').removeClass('anatomy-object');
 });
 
 
@@ -72,6 +72,10 @@ human.send('annotations.info',function(annotations){
     }
   }
 });
+
+human.on( 'hotspots.picked' , function(object){
+  console.log(object)
+})
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
 //   human.send("scene.info", function (data) {
