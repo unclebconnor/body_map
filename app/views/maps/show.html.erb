@@ -50,23 +50,18 @@
 <script>
 var human = new HumanAPI("embeddedHuman");
 
+//scanner replaces matching vocab words with buttons 
 var toStrip = "";
-
 $('#embeddedHuman').scanner({
   toStrip: toStrip , 
   formatData: 'focus'
 });
-
 $('#embeddedHuman').scanner();
 
-
-human.on("human.ready", function() {
-    setTimeout(function(){ 
-      $('.anatomy-object').addClass('button is-small'); 
-    }, 500);
-    
-}); 
-
+//adds styling when dom nodes are created
+$('body').on('DOMNodeInserted',function(e){
+    $('.anatomy-object').addClass('button is-small')
+});
 
 
 //hide visible annotations
@@ -77,12 +72,6 @@ human.send('annotations.info',function(annotations){
     }
   }
 });
-
-
-
-
-
-
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
 //   human.send("scene.info", function (data) {
