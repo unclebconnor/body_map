@@ -1,71 +1,80 @@
-<section class="lr-pads tb-pads">
-  <div class="is-size-3">Edit Map</div>
-</section>
-
-<section class="lr-pads tb-pads">
+<section class="lr-pads tb-pads spacer"></section>
+<section class="section columns killThePad lr-margin center level">
 <!-- begin top row -->
-  <div class="container is-fluid columns level">
-    <div class="column level-item">
-      <div id="human-content" >
-        <iframe 
-          id="embeddedHuman" 
-          src="https://human.biodigital.com/widget?<%= @widgetId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131"
-        >
-        </iframe>
-      </div>
+  <div class="container column is-half-desktop is-half-tablet lr-padNudge">
+    <div id="human-content" class="inline-block" >
+      <iframe 
+        id="embeddedHuman" 
+        src="https://human.biodigital.com/widget?<%= @widgetId%>&dk=7c93e81cdef1f39018ed9ab3d8359f4f88835131"
+        class="showHuman box"
+      >
+      </iframe>
     </div>
-    <div class="column box">
+  </div>
+  <div class="container column is-half-desktop is-half-tablet lr-pads">
     <%= form_for @map do |m| %>
-      <div>
+      <div class="lr-pads box">
+        <div class="is-size-3">Edit Map</div>
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label left">Name</label>
           <div class="control">
             <%= m.text_field :name, class: "input" %>
           </div>
         </div>
         <div class="field">
-          <label class="label">Body System</label>
+          <label class="label left">Body System</label>
           <div class="control">
             <%= @map.bodySystem %>
           </div>
         </div>
         <div class="field">
-          <label class="label">Summary</label>
+          <label class="label left">Summary</label>
           <div class="control">
-            <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the student page" %>
+            <%= m.text_area :summary, class: "textarea scroll", placeholder: "This will be displayed at the top of the student page" %>
+          </div>
+        </div>
+        <div class="columns level center tb-nudge ">
+          <div class="column level-item killThePad ">
+            <button class="button " id="openModal">+ Annotation</button>
+          </div>
+          <div class="field is-grouped column killThePad inline-block center ">
+            <div class="control inline-block">
+              <button class="button is-link" type="submit">Update Map</button>
+            </div>
           </div>
         </div>
       </div>
-      <button class="button" id="openModal">+ Add Annotation</button>
     </div>
   </div>
 <!-- next row -->
-  <div class="container is-fluid">
-      <div class="box">
+  <section class="lr-pads tb-pads spacer"></section>
+  <div class="section columns killThePad lr-margin center level">
+    <%= render 'annotations/index', map: @map%>
+  </div>
+<!-- next row -->
+  <div class="columns killThePad lr-margin center level">
+    <div class="container is-fluid column lr-pads">
+      <div class="box tb-margin">
         <div class="field">
-          <label class="label">Article</label>
+          <label class="label center">Article</label>
           <div class="control">
-            <%= m.text_area :article, class: "textarea", placeholder: "This is the content of the student page" %>
-          </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" type="submit">Submit</button>
+            <%= m.trix_editor :article, class: "textarea scroll", placeholder: "This is the content of the student page" %>
           </div>
         </div>
       </div>
     <% end %>
+    </div>
   </div>
 </section>
 
-<hr>
 
 
-
-<div class=" modal" id="modalWrapper">
+<div class="modal" id="modalWrapper">
   <div class="modal-background"></div>
   <div class="modal-card">
-    <header class="modal-card-head">Create New Annotation</header>
+    <header class="modal-card-head">
+      <div class="has-text-weight-bold">Create New Annotation</div>
+    </header>
     <section class="modal-card-body">
       <%= form_for Annotation.new do |a| %>
         <%= a.hidden_field :map_id, :value => @map.id %>
@@ -91,14 +100,9 @@
   </div>
 </div>
 
-<p>List of annotations</p>
 
-<div id="annotationsPartial">
-<%= render 'annotations/index', map: @map%>
-</div>
 
 <!-- To show preview of 3d model -->
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://developer.biodigital.com/builds/human-components/1.0.0/js/human-components.min.js"></script>
 <script src="https://developer.biodigital.com/builds/api/2/human-api.min.js"></script>

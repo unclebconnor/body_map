@@ -7,7 +7,15 @@
 					class="homePhoto level-item box"
 				></img>
 				<p class="is-size-4">Welcome <span class="nowrap"><%= @user.name %>!</span></p>
-				<p class="is-size-5 tb-margin">You have <%= @map_count %> Maps</p>
+				<% if @map_count==1 %>
+					<p class="is-size-5 tb-margin">
+						You have <%= @map_count %> Map
+					</p>
+				<% else %>
+					<p class="is-size-5 tb-margin">
+						You have <%= @map_count %> Maps
+					</p>
+ 				<% end %>
 				<%= link_to "+ New Map", new_map_path, class: "button" %>
 			</div>
 		</div>

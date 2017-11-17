@@ -1,13 +1,25 @@
-<section class="section">	
-	<div class="container is-fluid">
-		<h1>Annotation#index</h1>
-		<p>List of annotations for this map</p>
+
+<div class="container is-fluid column lr-pads">
+	<div class="box">
+		<label class="label ">Annotations on this Map</label>
+		<section class="tb-pads spacer"></section>
+		<div class="bottomMargin killThePad">
+			<div class=" columns lr-med-pads">
+				<div class="column is-one-fifth left has-text-weight-bold">Object</div>
+				<div class="column is-half left has-text-weight-bold">Description</div>
+			</div>
+		</div>
 		<% map.annotations.each do |a| %>
-			<div class="columns box">
-				<div class="column"><%= a.title %></div>
-				<div class="column"><%= a.description %></div>
-				<div class="column"><%= a.link %></div>
+			<div class="box killThePad ">
+				<div class="columns lr-med-pads  ">
+					<div class="column is-one-fifth has-text-weight-bold left"><%= a.title %></div>
+					<div class="column is-half left"><%= a.description %></div>
+					<div class="column">
+						<%= link_to "Delete", annotation_path(a), method: :delete %>
+					</div>
+				</div>
 			</div>
 		<% end %>
+		<section class="tb-nudge spacer"></section>
 	</div>
-</section>
+</div>

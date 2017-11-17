@@ -22,13 +22,13 @@
           <div class="field">
             <label class="label">Summary</label>
             <div class="control">
-              <%= m.text_area :summary, class: "textarea", placeholder: "This will be displayed at the top of the map page" %>
+              <%= m.text_area :summary, class: "textarea scroll", placeholder: "This will be displayed at the top of the map page" %>
             </div>
           </div>
           <div class="field">
             <label class="label">Article</label>
             <div class="control">
-              <%= m.text_area :article, class: "textarea", placeholder: "This is the main content of the map page" %>
+              <%= m.trix_editor :article, class: "textarea scroll", placeholder: "This is the main content of the map page" %>
             </div>
           </div>
           <div class="field is-grouped">

@@ -2,7 +2,7 @@
 <section class="section killThePad lr-margin tb-margin">
   <div class="container is-fluid box">
     <div class="annotationButtons columns level">
-      <div class="column is-one-fifth-desktop is-one-fifth-tablet">
+      <div class="column is-one-fifth-desktop is-one-fifth-tablet click">
         Click to Interact
       </div>
       <div class="column">
@@ -35,8 +35,8 @@
       <div>
     <div class="article">
       <div class="padR left is-size-4 tb-nudge">Article:</div> 
-      <div class="padR has-text-justified"><%= @map.article %><div>
-         <div>
+      <div class="padR has-text-justified" data-scantext data-target="embeddedHuman"><%= @map.article.html_safe %><div>
+    </div>
   </div>
 </section>
 
@@ -50,6 +50,25 @@
 <script>
 var human = new HumanAPI("embeddedHuman");
 
+var toStrip = "";
+
+$('#embeddedHuman').scanner({
+  toStrip: toStrip , 
+  formatData: 'focus'
+});
+
+$('#embeddedHuman').scanner();
+
+
+human.on("human.ready", function() {
+    setTimeout(function(){ 
+      $('.anatomy-object').addClass('button is-small'); 
+    }, 500);
+    
+}); 
+
+
+
 //hide visible annotations
 human.send('annotations.info',function(annotations){
   for (var property in annotations) {
@@ -58,6 +77,12 @@ human.send('annotations.info',function(annotations){
     }
   }
 });
+
+
+
+
+
+
 
 //THIS SHIT WORKS YES...I mean it gets the object data shown in the model
 //   human.send("scene.info", function (data) {

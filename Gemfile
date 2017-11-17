@@ -34,6 +34,7 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'dotenv-rails'
 gem "bulma-rails", "~> 0.6.1"
 gem 'gon'
+gem 'trix'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

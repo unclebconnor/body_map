@@ -74,6 +74,7 @@ body {
 	grid-row: 3;
 }
 
+
 @media only screen and (min-width: 768px) {
 	.showHuman{
 		width: 40vw;
@@ -132,6 +133,19 @@ body {
 	margin: .25rem;
 }
 
+.medMargin{
+	margin: .75rem;
+}
+
+.bottomMargin{
+	margin-bottom: 1rem;
+}
+
+.lr-med-pads{
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+}
+
 .lr-pads{
 	padding-left: 1.5rem !important;
 	padding-right: 1.5rem !important;
@@ -182,8 +196,13 @@ body {
 }
 
 .inline-block{
-	display: inline-block;
+	display: inline-block !important;
 }
+
+.scroll{
+	overflow: scroll;
+}
+
 
 
 

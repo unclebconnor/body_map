@@ -35,8 +35,9 @@ class AnnotationsController < ApplicationController
 
   def destroy
   	#search for map or pass params
-    Annotation.find(params[:id]).delete
-    redirect_to maps_path(@map)
+    @annotation = Annotation.find(params[:id]).delete
+    @map = @annotation.map_id
+    redirect_to edit_map_path(@map)
   end
 
   private

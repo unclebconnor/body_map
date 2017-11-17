@@ -5,8 +5,8 @@
 			<div class="box">
 				<div class="mapListItemContainer">
 					<div class="mapListR1 left has-text-weight-bold is-size-5"><%= map.name %></div>
-					<div class="mapListR2 tb-pads border-bottom left"><%= map.bodySystem %></div>
-					<div class="mapListR3 columns tb-nudge killThePad">
+					<div class="mapListR2 tb-pads bottomMargin left"><%= map.bodySystem %></div>
+					<div class="mapListR3 is-flex columns tb-nudge killThePad">
 						<div class="column killThePad"><%= link_to "View", map_path(map) %></div>
 						<div class="column killThePad"><%= link_to "Edit", edit_map_path(map) %></div>
 						<div class="column killThePad"><%= link_to "Delete", map_path(map), method: :delete %></div>
