@@ -47,10 +47,7 @@
     </div>
   </div>
 <!-- next row -->
-  <section class="lr-pads tb-pads spacer"></section>
-  <div class="section columns killThePad lr-margin center level">
-    <%= render 'annotations/index', map: @map%>
-  </div>
+  
 <!-- next row -->
   <div class="columns killThePad lr-margin center level">
     <div class="container is-fluid column lr-pads">
@@ -66,7 +63,9 @@
     </div>
   </div>
 </section>
-
+  <div class="section columns killThePad lr-margin center level">
+    <%= render 'annotations/index', map: @map%>
+  </div>
 
 
 <div class="modal" id="modalWrapper">
