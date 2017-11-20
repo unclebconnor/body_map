@@ -15,6 +15,10 @@ class MapsController < ApplicationController
   end
 
   def edit
+    if !current_user
+      redirect_to root_path
+    end
+
     @map = Map.find(params[:id])
     @widgetInfo = Widget.find_by name: @map.bodySystem
     @widgetSelected =@widgetInfo.name
