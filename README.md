@@ -9,6 +9,6 @@ You can see how the models are set up on this ![database diagram](https://www.lu
 
 ### Tech
 * Ruby on Rails
-* ![Bulma (CSS Framework)](https://bulma.io/)
-* ![BioDigital - Human Body API](https://developer.biodigital.com/)
+* [Bulma (CSS Framework)](https://bulma.io/)
+* [BioDigital - Human Body API](https://developer.biodigital.com/)
 
