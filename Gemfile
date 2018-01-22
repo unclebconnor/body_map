@@ -35,6 +35,7 @@ gem 'dotenv-rails'
 gem "bulma-rails", "~> 0.6.1"
 gem 'gon'
 gem 'trix'
+gem 'ddtrace'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
